@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/yuanbao-ai-demo/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

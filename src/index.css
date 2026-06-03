@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  background: #1a1a1a;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #ECECEC;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+/* WeChat dark palette */
+:root {
+  --wx-bg: #111111;
+  --wx-bg-2: #1C1C1C;
+  --wx-bg-3: #232323;
+  --wx-divider: #262626;
+  --wx-text: #ECECEC;
+  --wx-text-2: #9A9A9A;
+  --wx-text-3: #6E6E6E;
+  --wx-green: #07C160;
+  --wx-green-bubble: #95EC69;
+  --wx-blue: #4C9CF1;
+  --yb-from: #4FE0A2;
+  --yb-to: #2FB57A;
+}
+
+/* Scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+.thin-scroll::-webkit-scrollbar { width: 4px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,.08); border-radius: 999px; }
+
+/* Animations */
+@keyframes yb-fade-up { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform: translateY(0);} }
+.yb-fade-up { animation: yb-fade-up .28s ease-out both; }
+
+@keyframes yb-fade { from { opacity:0;} to { opacity:1;} }
+.yb-fade { animation: yb-fade .25s ease-out both; }
+
+@keyframes yb-slide-up { from { transform: translateY(100%);} to { transform: translateY(0);} }
+.yb-slide-up { animation: yb-slide-up .3s cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes yb-pulse { 0%,100% { opacity: 1;} 50% { opacity: .55;} }
+.yb-pulse { animation: yb-pulse 1.6s ease-in-out infinite; }
+
+@keyframes yb-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.yb-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(79,224,162,.12), transparent);
+  background-size: 200% 100%;
+  animation: yb-shimmer 2.4s ease-in-out infinite;
+}
+
+/* Phone frame for desktop preview */
+.phone-frame {
+  width: 100%;
+  max-width: 390px;
+  height: 844px;
+  max-height: 100%;
+  background: var(--wx-bg);
+  border-radius: 44px;
+  box-shadow:
+    0 30px 80px -20px rgba(0,0,0,.6),
+    0 0 0 10px #0a0a0a,
+    0 0 0 11px #2a2a2a;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .phone-frame {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* iOS-like notch */
+.ios-notch {
+  position: absolute;
+  top: 8px; left: 50%; transform: translateX(-50%);
+  width: 116px; height: 32px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 60;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .ios-notch { display: none; }
+}
+
+/* WeChat list divider */
+.wx-divider { border-top: 0.5px solid var(--wx-divider); }
+
+/* Long-press visual */
+.lp-active { background: rgba(255,255,255,.04); }
+
+/* hide native input ring */
+input, textarea { outline: none; }
